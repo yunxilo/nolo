@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Design — Exercise</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .breakpoint-indicator { display:none; font-size:0.8rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; }
+    @media (max-width:480px)                    { .bp-xs { display:inline-block; color:#fb7185; } }
+    @media (min-width:481px) and (max-width:768px)  { .bp-sm { display:inline-block; color:#fbbf24; } }
+    @media (min-width:769px) and (max-width:1024px) { .bp-md { display:inline-block; color:#34d399; } }
+    @media (min-width:1025px)                   { .bp-lg { display:inline-block; color:#38bdf8; } }
+
+    .fluid-type { font-size: clamp(1rem, 3vw + 0.5rem, 2.5rem); font-weight:700; }
+
+    .responsive-nav { display:flex; gap:1rem; }
+    @media (max-width:600px) { .responsive-nav { flex-direction:column; gap:0.5rem; } }
+
+    .card-responsive { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; }
+    @media (max-width:768px) { .card-responsive { grid-template-columns:repeat(2,1fr); } }
+    @media (max-width:480px) { .card-responsive { grid-template-columns:1fr; } }
+    .rcard { background:rgba(124,58,237,0.2); border:1px solid rgba(167,139,250,0.25); border-radius:0.75rem; padding:1.25rem; }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <a href="/" class="nav-logo">MA</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/workinwebprogramming.html">Web Programming</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-wrapper">
+    <div class="page-hero">
+      <a href="/workinwebprogramming.html" class="back-link">← Back to Web Programming</a>
+      <div class="section-label">Exercise 10</div>
+      <h1>Responsive <span style="background:linear-gradient(135deg,#a78bfa,#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Design</span></h1>
+      <p>Responsive design means your page looks great on any screen — phone, tablet, laptop, or widescreen monitor.</p>
+    </div>
+
+    <div class="section">
+      <div class="demo-box">
+        <h3>1. Current Breakpoint</h3>
+        <p>Resize the browser window to see which breakpoint is active:</p>
+        <div style="margin-top:1rem;padding:1rem;background:rgba(15,14,35,0.8);border-radius:0.75rem;text-align:center;">
+          <span class="breakpoint-indicator bp-xs">📱 XS — Mobile (&lt;480px)</span>
+          <span class="breakpoint-indicator bp-sm">📱 SM — Small (481–768px)</span>
+          <span class="breakpoint-indicator bp-md">💻 MD — Tablet (769–1024px)</span>
+          <span class="breakpoint-indicator bp-lg">🖥️ LG — Desktop (&gt;1025px)</span>
+        </div>
+        <pre>@media (max-width: 480px)  { /* mobile  */ }
+@media (max-width: 768px)  { /* tablet  */ }
+@media (max-width: 1024px) { /* laptop  */ }
+@media (min-width: 1025px) { /* desktop */ }</pre>
+      </div>
+
+      <div class="demo-box">
+        <h3>2. Fluid Typography with clamp()</h3>
+        <p><code>clamp(min, preferred, max)</code> scales the font size fluidly between a minimum and maximum value.</p>
+        <div class="fluid-type" style="margin:1rem 0;">This text scales with the viewport</div>
+        <pre>h1 { font-size: clamp(1.5rem, 5vw, 3.5rem); }</pre>
+      </div>
+
+      <div class="demo-box">
+        <h3>3. Responsive Grid</h3>
+        <p>This grid shows 3 columns on desktop, 2 on tablet, 1 on mobile. Resize to see it change.</p>
+        <div class="card-responsive" style="margin-top:1rem;">
+          <div class="rcard"><h4>Card 1</h4><p>Responsive grid item</p></div>
+          <div class="rcard"><h4>Card 2</h4><p>Responsive grid item</p></div>
+          <div class="rcard"><h4>Card 3</h4><p>Responsive grid item</p></div>
+          <div class="rcard"><h4>Card 4</h4><p>Responsive grid item</p></div>
+          <div class="rcard"><h4>Card 5</h4><p>Responsive grid item</p></div>
+          <div class="rcard"><h4>Card 6</h4><p>Responsive grid item</p></div>
+        </div>
+        <pre>@media (max-width: 768px) { .grid { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 480px) { .grid { grid-template-columns: 1fr; } }</pre>
+      </div>
+
+      <div class="demo-box">
+        <h3>4. The meta viewport Tag</h3>
+        <p>Without this tag, mobile browsers render the page at desktop width and scale it down. It must be in every page's <code>&lt;head&gt;</code>.</p>
+        <pre>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</pre>
+      </div>
+
+      <div class="demo-box">
+        <h3>5. Mobile-First Strategy</h3>
+        <p>Write base styles for mobile, then use <code>min-width</code> media queries to enhance for larger screens.</p>
+        <pre>/* Base = mobile */
+.nav { flex-direction: column; }
+
+/* Tablet and up */
+@media (min-width: 768px) { .nav { flex-direction: row; } }
+
+/* Desktop and up */
+@media (min-width: 1024px) { .nav { gap: 3rem; } }</pre>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>Mohammed Anas — Web Programming Exercise &copy; 2024</p>
+    <a href="/workinwebprogramming.html">← Back to all exercises</a>
+  </footer>
+</body>
+</html>
