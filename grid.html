@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Grid — Exercise</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .grid-demo { display: grid; gap: 0.75rem; margin: 1rem 0; }
+    .grid-cell  { background: linear-gradient(135deg,rgba(124,58,237,0.4),rgba(37,99,235,0.3)); border: 1px solid rgba(167,139,250,0.3); border-radius: 0.5rem; padding: 1rem; color:#f1f5f9; font-weight:600; font-size:0.85rem; text-align:center; }
+    .span2 { grid-column: span 2; background: linear-gradient(135deg,rgba(56,189,248,0.3),rgba(37,99,235,0.2)); }
+    .span3 { grid-column: span 3; background: linear-gradient(135deg,rgba(251,113,133,0.25),rgba(167,139,250,0.15)); }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <a href="/" class="nav-logo">MA</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/workinwebprogramming.html">Web Programming</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-wrapper">
+    <div class="page-hero">
+      <a href="/workinwebprogramming.html" class="back-link">← Back to Web Programming</a>
+      <div class="section-label">Exercise 05</div>
+      <h1>CSS <span style="background:linear-gradient(135deg,#a78bfa,#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Grid</span></h1>
+      <p>CSS Grid is a two-dimensional layout system — the most powerful tool for building complex, responsive page layouts.</p>
+    </div>
+
+    <div class="section">
+      <div class="demo-box">
+        <h3>1. Basic 3-Column Grid</h3>
+        <div class="grid-demo" style="grid-template-columns: repeat(3,1fr);">
+          <div class="grid-cell">1</div><div class="grid-cell">2</div><div class="grid-cell">3</div>
+          <div class="grid-cell">4</div><div class="grid-cell">5</div><div class="grid-cell">6</div>
+        </div>
+        <pre>.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }</pre>
+      </div>
+
+      <div class="demo-box">
+        <h3>2. Column Spanning</h3>
+        <p>Items can span multiple columns or rows with <code>grid-column: span N</code>.</p>
+        <div class="grid-demo" style="grid-template-columns: repeat(3,1fr);">
+          <div class="grid-cell span3">Full Width (span 3)</div>
+          <div class="grid-cell span2">Span 2</div>
+          <div class="grid-cell">1</div>
+          <div class="grid-cell">1</div><div class="grid-cell">1</div><div class="grid-cell">1</div>
+        </div>
+        <pre>.wide  { grid-column: span 2; }
+.full  { grid-column: span 3; }</pre>
+      </div>
+
+      <div class="demo-box">
+        <h3>3. Named Grid Areas</h3>
+        <p>The most readable way to define complex layouts — name each region and assign items to them.</p>
+        <div style="display:grid;gap:0.75rem;margin:1rem 0;grid-template-areas:'header header' 'sidebar main' 'footer footer';grid-template-columns:200px 1fr;">
+          <div class="grid-cell" style="grid-area:header;">Header</div>
+          <div class="grid-cell" style="grid-area:sidebar;background:rgba(56,189,248,0.25);">Sidebar</div>
+          <div class="grid-cell" style="grid-area:main;min-height:80px;background:rgba(124,58,237,0.3);">Main Content</div>
+          <div class="grid-cell" style="grid-area:footer;">Footer</div>
+        </div>
+        <pre>.layout {
+  display: grid;
+  grid-template-areas:
+    'header header'
+    'sidebar main'
+    'footer footer';
+  grid-template-columns: 200px 1fr;
+}
+.header  { grid-area: header; }
+.sidebar { grid-area: sidebar; }
+.main    { grid-area: main; }
+.footer  { grid-area: footer; }</pre>
+      </div>
+
+      <div class="demo-box">
+        <h3>4. auto-fill and minmax</h3>
+        <p>Create a fluid grid that automatically adjusts the number of columns based on container width.</p>
+        <div class="grid-demo" style="grid-template-columns:repeat(auto-fill,minmax(140px,1fr));">
+          <div class="grid-cell">Card</div><div class="grid-cell">Card</div><div class="grid-cell">Card</div>
+          <div class="grid-cell">Card</div><div class="grid-cell">Card</div><div class="grid-cell">Card</div>
+        </div>
+        <pre>.responsive-grid {
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+}</pre>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>Mohammed Anas — Web Programming Exercise &copy; 2024</p>
+    <a href="/workinwebprogramming.html">← Back to all exercises</a>
+  </footer>
+</body>
+</html>
