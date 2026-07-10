@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Work in C Programming — Mohammed Anas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="nav">
+    <a href="/" class="nav-logo">MA</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/workinwebprogramming.html">Web Programming</a></li>
+      <li><a href="/workincprogramming.html">C Programming</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-wrapper">
+
+    <!-- ===== PAGE HERO ===== -->
+    <div class="page-hero">
+      <a href="/" class="back-link">← Back to Homepage</a>
+      <div class="section-label">C Programming Course</div>
+      <h1>Work in C <span style="background:linear-gradient(135deg,#a78bfa,#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Programming</span></h1>
+      <p style="max-width:650px;font-size:1.1rem;">
+        A documentation of my C programming journey through HackerRank challenges, SoloLearn coursework,
+        and personal reflections on learning one of the most foundational programming languages in computer science.
+      </p>
+      <div style="display:flex;gap:0.75rem;margin-top:1.5rem;flex-wrap:wrap;">
+        <span class="tag">HackerRank</span>
+        <span class="tag">SoloLearn</span>
+        <span class="tag">C Language</span>
+        <span class="tag">Algorithms</span>
+        <span class="tag">Problem Solving</span>
+      </div>
+    </div>
+
+    <hr class="glow-divider">
+
+    <!-- ===== SECTION 1: HACKERRANK ===== -->
+    <div class="section" id="hackerrank">
+      <div class="section-label">Section 1</div>
+      <h2>HackerRank Practice</h2>
+
+      <div style="display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:start;margin-top:2rem;" class="hackerrank-layout">
+        <div>
+          <p>
+            My journey with HackerRank began during the early weeks of the C Programming course, when our professor introduced us to competitive programming platforms as a way to reinforce the theoretical concepts we were learning in class. I had heard of HackerRank before but had never seriously engaged with it. The first time I logged in and attempted a challenge, I immediately realized that this was a very different experience from simply writing a program in a text editor and running it locally. HackerRank evaluates your code against a hidden set of test cases, meaning your solution must be not just correct for one or two examples, but generally correct for all possible valid inputs.
+          </p>
+          <p>
+            The first set of challenges I tackled were from the "C" domain on HackerRank. They started deceptively simple — printing "Hello, World!" to the standard output, performing basic arithmetic, reading integers from standard input. But even these early exercises taught me something important: in C, you are responsible for everything. There is no magic. You must explicitly declare variable types, manage your input and output, and be precise about every character you print. Coming from a background where I had experimented with higher-level scripting, the discipline required by C was both humbling and enlightening.
+          </p>
+          <p>
+            As I progressed to intermediate challenges, I encountered problems involving arrays, strings, and loops. One challenge that stands out in my memory is a problem that required me to reverse an array in place without creating a copy. In a language like Python, this would be a one-liner. In C, I had to think carefully about pointer arithmetic, swap operations, and off-by-one errors. The experience of debugging that program — stepping through my logic manually, adding print statements to inspect intermediate values — was one of the most valuable learning experiences of the semester. I began to truly understand what it means for a program to be correct, efficient, and readable.
+          </p>
+          <p>
+            The string manipulation challenges were particularly impactful. Working with character arrays in C forces you to understand that a string is fundamentally an array of characters terminated by a null byte (<code>'\0'</code>). This seemingly simple fact has profound implications for how you write functions that process strings. I learned about <code>strlen()</code>, <code>strcpy()</code>, <code>strcmp()</code>, and <code>strcat()</code> from the standard library, but more importantly, I learned to implement these functions myself from scratch as part of certain exercises. Writing my own <code>strlen</code> using pointer arithmetic gave me a deep intuition for how memory and data are related in low-level programming.
+          </p>
+          <p>
+            HackerRank also exposed me to the concept of time and space complexity in a practical way. Some of my initial solutions passed the basic test cases but timed out on the larger ones. This forced me to think about algorithmic efficiency — not as an abstract theoretical concept, but as a real constraint with real consequences. I learned to look at my nested loops and ask: "Can this be done in a single pass?" I started reading about Big O notation with renewed interest because I now had a concrete reason to care about it.
+          </p>
+          <p>
+            The community aspect of HackerRank was also valuable. After solving a problem, I would browse the editorial or look at other users' approved solutions. Seeing how an experienced programmer solved the same problem in half the lines, using a more elegant algorithm or a clever use of bitwise operations, expanded my understanding beyond what any textbook could. I learned to appreciate code that was not just correct, but beautifully written — concise, readable, and efficient.
+          </p>
+          <p>
+            By the end of the semester, I had completed over thirty challenges in the C domain, earning multiple badges. My problem-solving skills improved dramatically. I became more comfortable working with pointers, understanding stack and heap memory, and thinking algorithmically. HackerRank did not just teach me C — it taught me how to think like a programmer, which is a skill that will serve me across every language and technology I encounter in the future.
+          </p>
+        </div>
+
+        <!-- Certificate Card -->
+        <div>
+          <div class="cert-card">
+            <div class="cert-icon">🏆</div>
+            <h3>HackerRank Certificate</h3>
+            <p>C Programming — Problem Solving</p>
+            <a href="#" onclick="return false;" class="btn btn-primary" style="width:100%;justify-content:center;">View Certificate</a>
+          </div>
+          <div class="cert-card" style="margin-top:1.25rem;">
+            <div class="cert-icon">🥇</div>
+            <h3>HackerRank Badge</h3>
+            <p>Problem Solving — Gold Badge</p>
+            <a href="#" onclick="return false;" class="btn btn-outline" style="width:100%;justify-content:center;">View Badge</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1rem;margin-top:2rem;">
+        <div class="card" style="text-align:center;padding:1.5rem;">
+          <div style="font-size:2rem;font-weight:800;background:linear-gradient(135deg,#a78bfa,#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">30+</div>
+          <div style="font-size:0.85rem;color:#64748b;margin-top:0.25rem;">Challenges Solved</div>
+        </div>
+        <div class="card" style="text-align:center;padding:1.5rem;">
+          <div style="font-size:2rem;font-weight:800;background:linear-gradient(135deg,#a78bfa,#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Gold</div>
+          <div style="font-size:0.85rem;color:#64748b;margin-top:0.25rem;">Badge Earned</div>
+        </div>
+        <div class="card" style="text-align:center;padding:1.5rem;">
+          <div style="font-size:2rem;font-weight:800;background:linear-gradient(135deg,#a78bfa,#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">C</div>
+          <div style="font-size:0.85rem;color:#64748b;margin-top:0.25rem;">Language Domain</div>
+        </div>
+        <div class="card" style="text-align:center;padding:1.5rem;">
+          <div style="font-size:2rem;font-weight:800;background:linear-gradient(135deg,#a78bfa,#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">100%</div>
+          <div style="font-size:0.85rem;color:#64748b;margin-top:0.25rem;">Pass Rate</div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="glow-divider">
+
+    <!-- ===== SECTION 2: SOLOLEARN ===== -->
+    <div class="section" id="sololearn">
+      <div class="section-label">Section 2</div>
+      <h2>SoloLearn Practice</h2>
+
+      <div style="display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:start;margin-top:2rem;" class="hackerrank-layout">
+        <div>
+          <p>
+            SoloLearn entered my life as a mobile-first learning platform, and it transformed the way I thought about studying. Unlike traditional textbooks or even structured online courses that demand you sit at a computer for extended periods, SoloLearn is designed to be consumed in short bursts — on the bus, during a lunch break, while waiting for a friend. This gamified, bite-sized approach to learning C programming turned out to be the perfect complement to both my university coursework and my HackerRank practice.
+          </p>
+          <p>
+            I started the C Programming course on SoloLearn from the very beginning, even though I already had some familiarity with the language from class. I wanted to ensure that my foundational knowledge had no gaps. The course opened with the basics: what a computer program is, how the compilation process works, and why C is special as a language that sits so close to hardware. Understanding the compilation pipeline — from source code to preprocessor to compiler to linker to executable — gave me a mental model that made error messages far less mysterious. When gcc complained about an "undefined reference" or a "syntax error before token," I now had a map of where in the pipeline the problem was occurring.
+          </p>
+          <p>
+            The lessons on variables and data types were deceptively rich. SoloLearn's quizzes forced me to think carefully about the difference between <code>int</code>, <code>float</code>, <code>double</code>, <code>char</code>, and <code>unsigned</code> variants. I discovered that integer overflow — when an integer exceeds its maximum value and wraps around — is a real, silent, dangerous bug that exists in production software. This lesson alone made me a more careful programmer. I learned to think about the range of possible values my variables could hold and to choose my data types deliberately.
+          </p>
+          <p>
+            The sections on control flow were where SoloLearn truly shone for me. The interactive code editor allowed me to modify the example programs directly in the browser and see the output change in real time. I experimented with <code>if/else</code> chains, nested <code>for</code> loops, <code>while</code> loops, and <code>do-while</code> loops. I played with <code>switch</code> statements and learned the critical importance of the <code>break</code> keyword to prevent fall-through behavior. SoloLearn's approach of presenting a concept, showing an example, asking a quiz question, and then presenting a coding challenge created a tight learning feedback loop that made the knowledge stick.
+          </p>
+          <p>
+            The module on functions was a turning point in my understanding of software design. Before this, I had been writing all my code in a single <code>main()</code> function, which worked for small programs but became unmanageable quickly. Learning to decompose a problem into small, focused functions — each with a single responsibility — fundamentally changed how I approach programming. I learned about function prototypes, return types, parameter passing by value versus by pointer, and recursion. I wrote my first recursive function (a factorial calculator) and felt a flash of genuine excitement when it worked correctly.
+          </p>
+          <p>
+            Pointers were the most challenging topic in the entire SoloLearn C course, as they are for most students. The platform handled this notoriously difficult concept with patience and multiple angles of explanation. I needed to revisit the pointer lessons several times, and I supplemented them with drawings on paper — literally sketching memory addresses and the values stored at each address — before the mental model finally clicked. Once it did, everything else in C started to make more sense: why functions that modify their arguments need pointer parameters, how arrays and pointers are related, how dynamic memory allocation works with <code>malloc()</code> and <code>free()</code>.
+          </p>
+          <p>
+            Completing the SoloLearn C course and earning the certificate was a proud moment. But more than the certificate, what I carry with me from the experience is a habit of thinking precisely and an appreciation for the elegance of well-written C code. SoloLearn showed me that programming is a skill that can be practiced anywhere, in any spare moment — and that consistency matters far more than marathon study sessions.
+          </p>
+        </div>
+
+        <!-- Certificate Card -->
+        <div>
+          <div class="cert-card">
+            <div class="cert-icon">🎓</div>
+            <h3>SoloLearn Certificate</h3>
+            <p>C Programming — Course Completion</p>
+            <a href="#" onclick="return false;" class="btn btn-primary" style="width:100%;justify-content:center;">View Certificate</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Topics Covered -->
+      <div class="card" style="margin-top:2rem;">
+        <h3 style="margin-bottom:1.25rem;">Topics Covered in SoloLearn C Course</h3>
+        <div style="display:flex;flex-wrap:wrap;gap:0.5rem;">
+          <span class="tag">Variables & Data Types</span>
+          <span class="tag">Input/Output (printf, scanf)</span>
+          <span class="tag">Operators & Expressions</span>
+          <span class="tag">If / Else Conditionals</span>
+          <span class="tag">Switch Statements</span>
+          <span class="tag">For Loops</span>
+          <span class="tag">While & Do-While</span>
+          <span class="tag">Functions & Recursion</span>
+          <span class="tag">Arrays (1D & 2D)</span>
+          <span class="tag">Strings & char arrays</span>
+          <span class="tag">Pointers & Memory</span>
+          <span class="tag">Structs</span>
+          <span class="tag">malloc() & free()</span>
+          <span class="tag">File I/O</span>
+          <span class="tag">Preprocessor Directives</span>
+        </div>
+      </div>
+    </div>
+
+    <hr class="glow-divider">
+
+    <!-- ===== SECTION 3: REFLECTION ===== -->
+    <div class="section" id="reflection">
+      <div class="section-label">Section 3</div>
+      <h2>Reflection &amp; Conclusion</h2>
+
+      <div class="card" style="margin-top:2rem;max-width:780px;">
+        <p>
+          Looking back on this semester's journey through C programming, I am struck by how much this language changed the way I think — not just about code, but about computation itself. Before C, I thought of a program as a set of instructions for the computer to follow. After C, I think of a program as a precise contract between the programmer and the machine, written in a language that leaves almost nothing implicit.
+        </p>
+        <p>
+          C taught me that every byte of memory matters. When I declare an <code>int</code>, I am reserving four bytes of memory and agreeing to treat the values stored there as a signed 32-bit integer. When I forget to null-terminate a string, I am not just making a mistake — I am potentially reading memory that belongs to a different part of my program or even to the operating system. This level of precision is demanding, but it builds a kind of programming discipline that I believe will make me a better engineer in any language I work in.
+        </p>
+        <p>
+          The combination of HackerRank's competitive challenges and SoloLearn's structured lessons created a complete learning experience. HackerRank pushed me to apply concepts under pressure and think about correctness and efficiency at the same time. SoloLearn gave me the theoretical foundation and filled the gaps in my understanding. Together with my university coursework, these three pillars formed a complete picture of C programming that I am genuinely proud of.
+        </p>
+        <p>
+          As I look forward to the next semesters, I intend to continue applying the discipline and low-level thinking that C instilled in me. Whether I am building web applications, working on machine learning pipelines, or contributing to open-source projects, the foundation built this semester in C programming will remain one of the most valuable investments of my academic career.
+        </p>
+      </div>
+    </div>
+
+  </div><!-- /page-wrapper -->
+
+  <footer class="footer">
+    <p>Mohammed Anas &mdash; C Programming Course &copy; 2024</p>
+    <div style="margin-top:0.5rem;display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;">
+      <a href="/">Home</a>
+      <a href="/workinwebprogramming.html">Web Programming</a>
+      <a href="/workincprogramming.html">C Programming</a>
+    </div>
+  </footer>
+
+  <style>
+    @media (max-width: 768px) {
+      .hackerrank-layout { grid-template-columns: 1fr !important; }
+      .cert-card { max-width: 100% !important; }
+    }
+  </style>
+</body>
+</html>
