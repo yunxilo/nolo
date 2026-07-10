@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Events — Exercise</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .event-box { padding:1.5rem; background:rgba(15,14,35,0.8); border:1px solid rgba(167,139,250,0.3); border-radius:0.75rem; transition:all 0.2s; user-select:none; cursor:pointer; text-align:center; font-weight:600; }
+    .log-entry { padding:0.35rem 0.75rem; font-size:0.8rem; font-family:monospace; border-bottom:1px solid rgba(167,139,250,0.08); color:#94a3b8; }
+    .log-entry span { color:#a78bfa; }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <a href="/" class="nav-logo">MA</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/workinwebprogramming.html">Web Programming</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-wrapper">
+    <div class="page-hero">
+      <a href="/workinwebprogramming.html" class="back-link">← Back to Web Programming</a>
+      <div class="section-label">Exercise 09</div>
+      <h1>JavaScript <span style="background:linear-gradient(135deg,#a78bfa,#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Events</span></h1>
+      <p>Events are signals from the browser that something happened — a click, a keystroke, a hover. JavaScript listens and responds.</p>
+    </div>
+
+    <div class="section">
+      <div class="demo-box">
+        <h3>1. Mouse Events</h3>
+        <div class="event-box" id="mouse-box">Hover or click me!</div>
+        <div id="mouse-log" style="margin-top:0.75rem;background:rgba(5,5,16,0.9);border:1px solid rgba(167,139,250,0.15);border-radius:0.5rem;max-height:120px;overflow-y:auto;"></div>
+        <pre>element.addEventListener('click',      handler);
+element.addEventListener('mouseover',  handler);
+element.addEventListener('mouseout',   handler);
+element.addEventListener('dblclick',   handler);</pre>
+      </div>
+
+      <div class="demo-box">
+        <h3>2. Keyboard Events</h3>
+        <input type="text" id="key-input" placeholder="Type in this box to see events...">
+        <div id="key-log" style="margin-top:0.75rem;background:rgba(5,5,16,0.9);border:1px solid rgba(167,139,250,0.15);border-radius:0.5rem;max-height:120px;overflow-y:auto;"></div>
+        <pre>input.addEventListener('keydown', e =&gt; console.log(e.key));
+input.addEventListener('keyup',   e =&gt; console.log(e.key));
+input.addEventListener('input',   e =&gt; console.log(e.target.value));</pre>
+      </div>
+
+      <div class="demo-box">
+        <h3>3. Form Events</h3>
+        <form id="event-form" onsubmit="return false;" style="max-width:400px;">
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" id="event-name" placeholder="Enter name">
+          </div>
+          <div class="form-group">
+            <label>Language</label>
+            <select id="event-lang" onchange="log('form-log','change','Language: '+this.value)">
+              <option>JavaScript</option><option>C</option><option>Python</option>
+            </select>
+          </div>
+          <button class="btn btn-primary" type="submit" onclick="log('form-log','submit','Form submitted!')">Submit</button>
+        </form>
+        <div id="form-log" style="margin-top:0.75rem;background:rgba(5,5,16,0.9);border:1px solid rgba(167,139,250,0.15);border-radius:0.5rem;max-height:100px;overflow-y:auto;"></div>
+      </div>
+
+      <div class="demo-box">
+        <h3>4. Event Delegation</h3>
+        <p>Instead of adding listeners to every child, add one to the parent and check <code>event.target</code>.</p>
+        <div id="delegation-list" style="display:flex;flex-wrap:wrap;gap:0.5rem;margin:1rem 0;">
+          <button class="btn btn-outline" data-action="html">HTML</button>
+          <button class="btn btn-outline" data-action="css">CSS</button>
+          <button class="btn btn-outline" data-action="js">JavaScript</button>
+          <button class="btn btn-outline" data-action="c">C Language</button>
+        </div>
+        <div id="delegation-output" style="padding:0.75rem;background:rgba(15,14,35,0.8);border-radius:0.5rem;font-family:monospace;font-size:0.85rem;color:#a78bfa;min-height:36px;"></div>
+        <pre>parent.addEventListener('click', e =&gt; {
+  if (e.target.matches('button')) {
+    console.log('Clicked:', e.target.dataset.action);
+  }
+});</pre>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>Mohammed Anas — Web Programming Exercise &copy; 2024</p>
+    <a href="/workinwebprogramming.html">← Back to all exercises</a>
+  </footer>
+
+  <script>
+    function log(containerId, eventName, detail) {
+      const c = document.getElementById(containerId);
+      const d = document.createElement('div');
+      d.className = 'log-entry';
+      d.innerHTML = `<span>${eventName}</span> — ${detail}`;
+      c.insertBefore(d, c.firstChild);
+      if (c.children.length > 8) c.removeChild(c.lastChild);
+    }
+
+    const mb = document.getElementById('mouse-box');
+    mb.addEventListener('click',     () => { mb.style.background='rgba(167,139,250,0.2)'; log('mouse-log','click','mouse clicked'); });
+    mb.addEventListener('dblclick',  () => { mb.style.background='rgba(56,189,248,0.2)'; log('mouse-log','dblclick','double-click!'); });
+    mb.addEventListener('mouseover', () => { mb.style.borderColor='#a78bfa'; log('mouse-log','mouseover','mouse entered'); });
+    mb.addEventListener('mouseout',  () => { mb.style.borderColor='rgba(167,139,250,0.3)'; mb.style.background='rgba(15,14,35,0.8)'; log('mouse-log','mouseout','mouse left'); });
+
+    const ki = document.getElementById('key-input');
+    ki.addEventListener('keydown', e => log('key-log','keydown',`key: "${e.key}"`));
+    ki.addEventListener('input',   e => log('key-log','input',`value: "${e.target.value}"`));
+
+    document.getElementById('delegation-list').addEventListener('click', e => {
+      if (e.target.tagName === 'BUTTON') {
+        document.getElementById('delegation-output').textContent = `You clicked: "${e.target.dataset.action}" via event delegation`;
+      }
+    });
+  </script>
+</body>
+</html>
