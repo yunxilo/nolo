@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Selectors — Exercise</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Demo-specific styles */
+    .demo-element { padding: 0.75rem 1.25rem; border-radius: 0.5rem; margin: 0.4rem 0; font-size: 0.9rem; }
+    .highlight   { background: rgba(167,139,250,0.2); border-left: 3px solid #a78bfa; color: #f1f5f9; }
+    .active      { background: rgba(56,189,248,0.2); border-left: 3px solid #38bdf8; color: #f1f5f9; }
+    p.special    { color: #fb7185; font-style: italic; }
+    li:first-child { color: #a78bfa; font-weight: bold; }
+    li:last-child  { color: #38bdf8; }
+    li:nth-child(even) { background: rgba(167,139,250,0.06); border-radius: 0.3rem; }
+    input[type="text"]  { border-color: #a78bfa; }
+    input[type="email"] { border-color: #38bdf8; }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <a href="/" class="nav-logo">MA</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/workinwebprogramming.html">Web Programming</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-wrapper">
+    <div class="page-hero">
+      <a href="/workinwebprogramming.html" class="back-link">← Back to Web Programming</a>
+      <div class="section-label">Exercise 02</div>
+      <h1>CSS <span style="background:linear-gradient(135deg,#a78bfa,#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Selectors</span></h1>
+      <p>Master the art of targeting HTML elements precisely using the full power of CSS selectors.</p>
+    </div>
+
+    <div class="section">
+      <div class="demo-box">
+        <h3>1. Class &amp; ID Selectors</h3>
+        <p>Use <code>.</code> for classes (reusable) and <code>#</code> for IDs (unique).</p>
+        <div class="demo-element highlight">.highlight — targeted by class</div>
+        <div class="demo-element active">.active — targeted by another class</div>
+        <pre>.highlight { background: rgba(167,139,250,0.2); }
+#unique-id  { color: cyan; }</pre>
+      </div>
+
+      <div class="demo-box">
+        <h3>2. Element &amp; Type Selectors</h3>
+        <p>Target all elements of a specific HTML tag type.</p>
+        <p class="special">This &lt;p&gt; with class "special" is styled via: <code>p.special</code></p>
+        <pre>p.special { color: #fb7185; font-style: italic; }</pre>
+      </div>
+
+      <div class="demo-box">
+        <h3>3. Pseudo-class Selectors</h3>
+        <p>Style elements based on their state or position.</p>
+        <ul style="list-style:none;padding:0;margin-top:0.75rem;">
+          <li style="padding:0.4rem;">First item — styled with <code>li:first-child</code></li>
+          <li style="padding:0.4rem;">Second item — styled with <code>li:nth-child(even)</code></li>
+          <li style="padding:0.4rem;">Third item — normal</li>
+          <li style="padding:0.4rem;">Last item — styled with <code>li:last-child</code></li>
+        </ul>
+        <pre>li:first-child  { color: #a78bfa; }
+li:last-child   { color: #38bdf8; }
+li:nth-child(even) { background: rgba(167,139,250,0.06); }</pre>
+      </div>
+
+      <div class="demo-box">
+        <h3>4. Attribute Selectors</h3>
+        <p>Target elements based on their HTML attributes.</p>
+        <div class="form-group" style="margin-top:1rem;">
+          <label>Text input (purple border via <code>input[type="text"]</code>)</label>
+          <input type="text" placeholder="type here...">
+        </div>
+        <div class="form-group">
+          <label>Email input (blue border via <code>input[type="email"]</code>)</label>
+          <input type="email" placeholder="email@example.com">
+        </div>
+        <pre>input[type="text"]  { border-color: #a78bfa; }
+input[type="email"] { border-color: #38bdf8; }</pre>
+      </div>
+
+      <div class="demo-box">
+        <h3>5. Combinators</h3>
+        <p>Combine selectors to express relationships between elements.</p>
+        <table>
+          <thead><tr><th>Combinator</th><th>Example</th><th>Meaning</th></tr></thead>
+          <tbody>
+            <tr><td><code>A B</code></td><td><code>div p</code></td><td>All &lt;p&gt; inside &lt;div&gt;</td></tr>
+            <tr><td><code>A &gt; B</code></td><td><code>div &gt; p</code></td><td>Direct child &lt;p&gt; of &lt;div&gt;</td></tr>
+            <tr><td><code>A + B</code></td><td><code>h2 + p</code></td><td>First &lt;p&gt; immediately after &lt;h2&gt;</td></tr>
+            <tr><td><code>A ~ B</code></td><td><code>h2 ~ p</code></td><td>All &lt;p&gt; siblings after &lt;h2&gt;</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>Mohammed Anas — Web Programming Exercise &copy; 2024</p>
+    <a href="/workinwebprogramming.html">← Back to all exercises</a>
+  </footer>
+</body>
+</html>
