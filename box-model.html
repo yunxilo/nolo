@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Box Model — Exercise</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .box-visual {
+      position: relative;
+      display: inline-block;
+      margin: 2rem auto;
+    }
+    .margin-box    { background: rgba(251,113,133,0.15); border: 2px dashed #fb7185; padding: 30px; border-radius:0.5rem; }
+    .border-box    { background: rgba(167,139,250,0.15); border: 8px solid #a78bfa; padding: 20px; border-radius:0.25rem; }
+    .padding-box   { background: rgba(56,189,248,0.15); border: 2px dashed #38bdf8; padding: 20px; }
+    .content-box   { background: rgba(124,58,237,0.4); padding: 1rem 2rem; color: #f1f5f9; text-align:center; font-weight:600; border-radius:0.2rem; }
+    .label-tag     { font-size:0.7rem; color:#64748b; text-transform:uppercase; letter-spacing:0.1em; position:absolute; }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <a href="/" class="nav-logo">MA</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/workinwebprogramming.html">Web Programming</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-wrapper">
+    <div class="page-hero">
+      <a href="/workinwebprogramming.html" class="back-link">← Back to Web Programming</a>
+      <div class="section-label">Exercise 03</div>
+      <h1>CSS <span style="background:linear-gradient(135deg,#a78bfa,#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Box Model</span></h1>
+      <p>Every HTML element is a rectangular box. The CSS box model describes how margin, border, padding, and content stack together.</p>
+    </div>
+
+    <div class="section">
+      <div class="demo-box" style="text-align:center;">
+        <h3>Box Model Visualized</h3>
+        <div class="box-visual">
+          <div class="margin-box">
+            <span style="font-size:0.75rem;color:#fb7185;font-weight:600;">MARGIN (30px)</span>
+            <div class="border-box">
+              <span style="font-size:0.75rem;color:#a78bfa;font-weight:600;">BORDER (8px)</span>
+              <div class="padding-box">
+                <span style="font-size:0.75rem;color:#38bdf8;font-weight:600;">PADDING (20px)</span>
+                <div class="content-box">CONTENT</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="demo-box">
+        <h3>1. Content</h3>
+        <p>The innermost layer. This is where text, images, and child elements live. You control its size with <code>width</code> and <code>height</code>.</p>
+        <pre>.box { width: 200px; height: 100px; }</pre>
+      </div>
+
+      <div class="demo-box">
+        <h3>2. Padding</h3>
+        <p>Padding is transparent space between the content and the border. It adds breathing room inside the element.</p>
+        <div style="display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:1rem;">
+          <div style="padding:0.5rem;background:rgba(56,189,248,0.15);border:1px dashed #38bdf8;border-radius:0.4rem;font-size:0.85rem;">padding: 0.5rem (small)</div>
+          <div style="padding:1.5rem;background:rgba(56,189,248,0.15);border:1px dashed #38bdf8;border-radius:0.4rem;font-size:0.85rem;">padding: 1.5rem (medium)</div>
+          <div style="padding:3rem;background:rgba(56,189,248,0.15);border:1px dashed #38bdf8;border-radius:0.4rem;font-size:0.85rem;">padding: 3rem (large)</div>
+        </div>
+        <pre>.box { padding: 1rem; }           /* all sides */
+.box { padding: 1rem 2rem; }      /* top/bottom left/right */
+.box { padding: 10px 15px 20px 5px; } /* top right bottom left */</pre>
+      </div>
+
+      <div class="demo-box">
+        <h3>3. Border</h3>
+        <p>The border wraps around the padding and content. You can control its width, style, and color.</p>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:1rem;align-items:center;">
+          <div style="padding:1rem;border:2px solid #a78bfa;border-radius:0.4rem;font-size:0.85rem;">solid</div>
+          <div style="padding:1rem;border:2px dashed #a78bfa;border-radius:0.4rem;font-size:0.85rem;">dashed</div>
+          <div style="padding:1rem;border:2px dotted #a78bfa;border-radius:0.4rem;font-size:0.85rem;">dotted</div>
+          <div style="padding:1rem;border:4px double #a78bfa;border-radius:0.4rem;font-size:0.85rem;">double</div>
+        </div>
+        <pre>.box { border: 2px solid #a78bfa; }
+.box { border-radius: 0.5rem; } /* rounded corners */</pre>
+      </div>
+
+      <div class="demo-box">
+        <h3>4. Margin</h3>
+        <p>Margin is transparent space outside the border. It creates separation between elements.</p>
+        <pre>.box { margin: 1rem; }          /* all sides */
+.box { margin: 0 auto; }        /* center horizontally */
+.box { margin-top: 2rem; }      /* one side only */</pre>
+      </div>
+
+      <div class="demo-box">
+        <h3>5. box-sizing: border-box</h3>
+        <p>By default, padding and border are added on top of the declared width. With <code>box-sizing: border-box</code>, width includes padding and border — making layouts predictable.</p>
+        <pre>*, *::before, *::after {
+  box-sizing: border-box; /* Best practice — applied globally */
+}</pre>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>Mohammed Anas — Web Programming Exercise &copy; 2024</p>
+    <a href="/workinwebprogramming.html">← Back to all exercises</a>
+  </footer>
+</body>
+</html>
