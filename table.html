@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML Tables — Exercise</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="nav">
+    <a href="/" class="nav-logo">MA</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/workinwebprogramming.html">Web Programming</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-wrapper">
+    <div class="page-hero">
+      <a href="/workinwebprogramming.html" class="back-link">← Back to Web Programming</a>
+      <div class="section-label">Exercise 07</div>
+      <h1>HTML <span style="background:linear-gradient(135deg,#a78bfa,#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Tables</span></h1>
+      <p>Tables display structured, tabular data in a grid of rows and columns with rich accessibility and styling options.</p>
+    </div>
+
+    <div class="section">
+      <div class="demo-box">
+        <h3>1. Basic Table Structure</h3>
+        <p>A table is made of <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code>, and <code>&lt;tfoot&gt;</code> sections with <code>&lt;tr&gt;</code> rows and <code>&lt;th&gt;</code>/<code>&lt;td&gt;</code> cells.</p>
+        <div style="overflow-x:auto;">
+          <table>
+            <thead>
+              <tr><th>Subject</th><th>Grade</th><th>Credits</th><th>Status</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Web Programming</td><td>18/20</td><td>4</td><td><span class="tag">Passed</span></td></tr>
+              <tr><td>C Programming</td><td>16/20</td><td>3</td><td><span class="tag">Passed</span></td></tr>
+              <tr><td>Algorithms</td><td>15/20</td><td>4</td><td><span class="tag">Passed</span></td></tr>
+              <tr><td>Mathematics</td><td>14/20</td><td>5</td><td><span class="tag">Passed</span></td></tr>
+            </tbody>
+            <tfoot>
+              <tr><td><strong>Average</strong></td><td><strong>15.75/20</strong></td><td><strong>16</strong></td><td></td></tr>
+            </tfoot>
+          </table>
+        </div>
+        <pre>&lt;table&gt;
+  &lt;thead&gt;&lt;tr&gt;&lt;th&gt;Subject&lt;/th&gt;&lt;th&gt;Grade&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;&lt;tr&gt;&lt;td&gt;Web Programming&lt;/td&gt;&lt;td&gt;18/20&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;
+  &lt;tfoot&gt;&lt;tr&gt;&lt;td&gt;Average&lt;/td&gt;&lt;td&gt;15.75/20&lt;/td&gt;&lt;/tr&gt;&lt;/tfoot&gt;
+&lt;/table&gt;</pre>
+      </div>
+
+      <div class="demo-box">
+        <h3>2. Spanning Columns &amp; Rows</h3>
+        <div style="overflow-x:auto;">
+          <table>
+            <thead>
+              <tr><th colspan="2">Semester 1</th><th colspan="2">Semester 2</th></tr>
+              <tr><th>Subject</th><th>Grade</th><th>Subject</th><th>Grade</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Web Programming</td><td>18/20</td><td>Databases</td><td>17/20</td></tr>
+              <tr><td>C Programming</td><td>16/20</td><td>OOP Java</td><td>15/20</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <pre>&lt;th colspan="2"&gt;Semester 1&lt;/th&gt; &lt;!-- spans 2 columns --&gt;
+&lt;td rowspan="2"&gt;Shared&lt;/td&gt;   &lt;!-- spans 2 rows --&gt;</pre>
+      </div>
+
+      <div class="demo-box">
+        <h3>3. Sortable Table (JavaScript)</h3>
+        <p>Click a column header to sort the table.</p>
+        <div style="overflow-x:auto;">
+          <table id="sort-table">
+            <thead>
+              <tr>
+                <th onclick="sortTable(0)" style="cursor:pointer;">Name ↕</th>
+                <th onclick="sortTable(1)" style="cursor:pointer;">Score ↕</th>
+                <th onclick="sortTable(2)" style="cursor:pointer;">Year ↕</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Mohammed Anas</td><td>95</td><td>2024</td></tr>
+              <tr><td>Ahmed Benali</td><td>88</td><td>2023</td></tr>
+              <tr><td>Sara El Idrissi</td><td>92</td><td>2024</td></tr>
+              <tr><td>Younes Karimi</td><td>79</td><td>2022</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>Mohammed Anas — Web Programming Exercise &copy; 2024</p>
+    <a href="/workinwebprogramming.html">← Back to all exercises</a>
+  </footer>
+
+  <script>
+    let sortDir = {};
+    function sortTable(col) {
+      const tbody = document.querySelector('#sort-table tbody');
+      const rows  = Array.from(tbody.querySelectorAll('tr'));
+      sortDir[col] = !sortDir[col];
+      rows.sort((a, b) => {
+        const va = a.cells[col].textContent.trim();
+        const vb = b.cells[col].textContent.trim();
+        const na = parseFloat(va), nb = parseFloat(vb);
+        const cmp = isNaN(na) ? va.localeCompare(vb) : na - nb;
+        return sortDir[col] ? cmp : -cmp;
+      });
+      rows.forEach(r => tbody.appendChild(r));
+    }
+  </script>
+</body>
+</html>
