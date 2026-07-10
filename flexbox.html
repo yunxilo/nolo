@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flexbox Layout — Exercise</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .flex-demo { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 1rem 0; padding: 1rem; background: rgba(15,14,35,0.8); border: 1px dashed rgba(167,139,250,0.3); border-radius: 0.75rem; min-height: 80px; align-items: stretch; }
+    .flex-item { background: linear-gradient(135deg, rgba(124,58,237,0.5), rgba(37,99,235,0.4)); border: 1px solid rgba(167,139,250,0.3); border-radius: 0.4rem; padding: 0.75rem 1.25rem; color: #f1f5f9; font-weight: 600; font-size: 0.85rem; display: flex; align-items: center; justify-content: center; }
+    .flex-item.grow { flex-grow: 1; }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <a href="/" class="nav-logo">MA</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/workinwebprogramming.html">Web Programming</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-wrapper">
+    <div class="page-hero">
+      <a href="/workinwebprogramming.html" class="back-link">← Back to Web Programming</a>
+      <div class="section-label">Exercise 04</div>
+      <h1>Flexbox <span style="background:linear-gradient(135deg,#a78bfa,#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Layout</span></h1>
+      <p>Flexbox is a one-dimensional layout method for arranging items in rows or columns with powerful alignment controls.</p>
+    </div>
+
+    <div class="section">
+      <div class="demo-box">
+        <h3>1. flex-direction</h3>
+        <p>Controls whether items flow in a row (default) or column.</p>
+        <p style="font-size:0.8rem;color:#64748b;">Row (default):</p>
+        <div class="flex-demo" style="flex-direction:row;">
+          <div class="flex-item">Item 1</div>
+          <div class="flex-item">Item 2</div>
+          <div class="flex-item">Item 3</div>
+        </div>
+        <p style="font-size:0.8rem;color:#64748b;">Column:</p>
+        <div class="flex-demo" style="flex-direction:column;max-width:200px;">
+          <div class="flex-item">Item 1</div>
+          <div class="flex-item">Item 2</div>
+          <div class="flex-item">Item 3</div>
+        </div>
+        <pre>.container { display: flex; flex-direction: row | column; }</pre>
+      </div>
+
+      <div class="demo-box">
+        <h3>2. justify-content</h3>
+        <p>Aligns items along the main axis (horizontal for rows).</p>
+        <p style="font-size:0.8rem;color:#64748b;">space-between:</p>
+        <div class="flex-demo" style="justify-content:space-between;">
+          <div class="flex-item">A</div><div class="flex-item">B</div><div class="flex-item">C</div>
+        </div>
+        <p style="font-size:0.8rem;color:#64748b;">center:</p>
+        <div class="flex-demo" style="justify-content:center;">
+          <div class="flex-item">A</div><div class="flex-item">B</div><div class="flex-item">C</div>
+        </div>
+        <p style="font-size:0.8rem;color:#64748b;">space-evenly:</p>
+        <div class="flex-demo" style="justify-content:space-evenly;">
+          <div class="flex-item">A</div><div class="flex-item">B</div><div class="flex-item">C</div>
+        </div>
+        <pre>.container { justify-content: flex-start | center | space-between | space-evenly; }</pre>
+      </div>
+
+      <div class="demo-box">
+        <h3>3. align-items</h3>
+        <p>Aligns items along the cross axis (vertical for rows).</p>
+        <div class="flex-demo" style="align-items:center;height:100px;">
+          <div class="flex-item" style="height:40px;">Short</div>
+          <div class="flex-item" style="height:70px;">Tall</div>
+          <div class="flex-item" style="height:55px;">Medium</div>
+        </div>
+        <pre>.container { align-items: stretch | center | flex-start | flex-end; }</pre>
+      </div>
+
+      <div class="demo-box">
+        <h3>4. flex-grow and flex-wrap</h3>
+        <p><code>flex-grow</code> lets items expand to fill available space. <code>flex-wrap</code> allows items to wrap to the next line.</p>
+        <div class="flex-demo" style="flex-wrap:wrap;">
+          <div class="flex-item grow">Grows</div>
+          <div class="flex-item grow">Grows</div>
+          <div class="flex-item" style="width:100%;">Full Width Row</div>
+        </div>
+        <pre>.item { flex-grow: 1; }   /* share remaining space equally */
+.container { flex-wrap: wrap; } /* items wrap on overflow */</pre>
+      </div>
+
+      <div class="demo-box">
+        <h3>5. A Centered Card Layout</h3>
+        <p>Centering content is trivially easy with flexbox.</p>
+        <div style="display:flex;justify-content:center;align-items:center;height:150px;background:rgba(15,14,35,0.8);border:1px dashed rgba(167,139,250,0.3);border-radius:0.75rem;margin-top:1rem;">
+          <div class="flex-item">Perfectly Centered</div>
+        </div>
+        <pre>.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+}</pre>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>Mohammed Anas — Web Programming Exercise &copy; 2024</p>
+    <a href="/workinwebprogramming.html">← Back to all exercises</a>
+  </footer>
+</body>
+</html>
