@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Animations — Exercise</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    @keyframes pulse  { 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(1.08);opacity:0.8} }
+    @keyframes spin   { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+    @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-20px)} }
+    @keyframes fadeIn { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+    @keyframes slide  { 0%{transform:translateX(-100%)} 100%{transform:translateX(100%)} }
+    @keyframes glow   { 0%,100%{box-shadow:0 0 10px rgba(167,139,250,0.3)} 50%{box-shadow:0 0 40px rgba(167,139,250,0.8),0 0 80px rgba(56,189,248,0.4)} }
+
+    .anim-pulse  { animation: pulse  2s ease-in-out infinite; }
+    .anim-spin   { animation: spin   2s linear infinite; display:inline-block; }
+    .anim-bounce { animation: bounce 1s ease-in-out infinite; display:inline-block; }
+    .anim-fadein { animation: fadeIn 1s ease forwards; }
+    .anim-glow   { animation: glow   2s ease-in-out infinite; }
+
+    .demo-row { display:flex; gap:2rem; align-items:center; flex-wrap:wrap; padding:1.5rem 0; }
+    .anim-box { width:80px;height:80px;border-radius:1rem;display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:700;background:linear-gradient(135deg,rgba(124,58,237,0.5),rgba(37,99,235,0.4));border:1px solid rgba(167,139,250,0.3); }
+
+    .hover-scale { transition: transform 0.3s ease; cursor:pointer; }
+    .hover-scale:hover { transform: scale(1.1); }
+    .hover-glow { transition: box-shadow 0.3s, border-color 0.3s; cursor:pointer; }
+    .hover-glow:hover { box-shadow: 0 0 25px rgba(167,139,250,0.5); border-color: #a78bfa; }
+
+    .progress-animate { height:8px;border-radius:99px;background:rgba(167,139,250,0.15);overflow:hidden;margin:0.5rem 0; }
+    .progress-fill { height:100%;border-radius:99px;background:linear-gradient(90deg,#7c3aed,#38bdf8);transform-origin:left;animation:growBar 2s ease forwards; }
+    @keyframes growBar { from{transform:scaleX(0)} to{transform:scaleX(1)} }
+
+    .shimmer { position:relative;overflow:hidden;background:rgba(15,14,35,0.8);border-radius:0.5rem;height:20px; }
+    .shimmer::after { content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(90deg,transparent,rgba(167,139,250,0.2),transparent);animation:slide 1.5s ease infinite; }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <a href="/" class="nav-logo">MA</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/workinwebprogramming.html">Web Programming</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-wrapper">
+    <div class="page-hero">
+      <a href="/workinwebprogramming.html" class="back-link">← Back to Web Programming</a>
+      <div class="section-label">Exercise 11</div>
+      <h1>CSS <span style="background:linear-gradient(135deg,#a78bfa,#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Animations</span></h1>
+      <p>CSS animations bring interfaces to life without a single line of JavaScript — using keyframes, transitions, and hardware-accelerated transforms.</p>
+    </div>
+
+    <div class="section">
+      <div class="demo-box">
+        <h3>1. @keyframes Animations</h3>
+        <div class="demo-row">
+          <div><div class="anim-box anim-pulse">💓</div><p style="font-size:0.75rem;text-align:center;margin-top:0.5rem;color:#64748b;">pulse</p></div>
+          <div><div class="anim-box anim-spin">⚙️</div><p style="font-size:0.75rem;text-align:center;margin-top:0.5rem;color:#64748b;">spin</p></div>
+          <div><div class="anim-box anim-bounce">🚀</div><p style="font-size:0.75rem;text-align:center;margin-top:0.5rem;color:#64748b;">bounce</p></div>
+          <div><div class="anim-box anim-fadein">✨</div><p style="font-size:0.75rem;text-align:center;margin-top:0.5rem;color:#64748b;">fade-in</p></div>
+          <div><div class="anim-box anim-glow">🌟</div><p style="font-size:0.75rem;text-align:center;margin-top:0.5rem;color:#64748b;">glow</p></div>
+        </div>
+        <pre>@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-20px); }
+}
+.element { animation: bounce 1s ease-in-out infinite; }</pre>
+      </div>
+
+      <div class="demo-box">
+        <h3>2. CSS Transitions</h3>
+        <p>Transitions smoothly interpolate property changes triggered by state changes like <code>:hover</code>.</p>
+        <div class="demo-row">
+          <div class="anim-box hover-scale">Scale</div>
+          <div class="anim-box hover-glow">Glow</div>
+          <div class="anim-box" style="transition:background 0.4s,border-color 0.4s;cursor:pointer;" onmouseover="this.style.background='linear-gradient(135deg,rgba(56,189,248,0.5),rgba(124,58,237,0.4))'" onmouseout="this.style.background='linear-gradient(135deg,rgba(124,58,237,0.5),rgba(37,99,235,0.4))'">Color</div>
+        </div>
+        <pre>.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}</pre>
+      </div>
+
+      <div class="demo-box">
+        <h3>3. Animated Progress Bar</h3>
+        <div style="margin:1rem 0;">
+          <div style="display:flex;justify-content:space-between;font-size:0.875rem;margin-bottom:0.3rem;"><span>HTML/CSS</span><span>85%</span></div>
+          <div class="progress-animate"><div class="progress-fill" style="width:85%"></div></div>
+          <div style="display:flex;justify-content:space-between;font-size:0.875rem;margin-bottom:0.3rem;margin-top:0.75rem;"><span>JavaScript</span><span>70%</span></div>
+          <div class="progress-animate"><div class="progress-fill" style="width:70%;animation-delay:0.2s"></div></div>
+          <div style="display:flex;justify-content:space-between;font-size:0.875rem;margin-bottom:0.3rem;margin-top:0.75rem;"><span>C Programming</span><span>65%</span></div>
+          <div class="progress-animate"><div class="progress-fill" style="width:65%;animation-delay:0.4s"></div></div>
+        </div>
+        <pre>@keyframes growBar {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+.fill { animation: growBar 2s ease forwards; transform-origin: left; }</pre>
+      </div>
+
+      <div class="demo-box">
+        <h3>4. Shimmer / Skeleton Loading</h3>
+        <p>A shimmer effect simulates loading content — pure CSS, no JavaScript.</p>
+        <div style="padding:1rem;background:rgba(15,14,35,0.8);border-radius:0.75rem;margin:1rem 0;">
+          <div class="shimmer" style="width:40%;height:16px;margin-bottom:0.75rem;border-radius:99px;"></div>
+          <div class="shimmer" style="width:100%;height:12px;margin-bottom:0.5rem;"></div>
+          <div class="shimmer" style="width:90%;height:12px;margin-bottom:0.5rem;"></div>
+          <div class="shimmer" style="width:75%;height:12px;"></div>
+        </div>
+        <pre>.shimmer::after {
+  content: '';
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  animation: slide 1.5s ease infinite;
+}</pre>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>Mohammed Anas — Web Programming Exercise &copy; 2024</p>
+    <a href="/workinwebprogramming.html">← Back to all exercises</a>
+  </footer>
+</body>
+</html>
