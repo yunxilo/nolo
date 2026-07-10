@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript DOM — Exercise</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="nav">
+    <a href="/" class="nav-logo">MA</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/workinwebprogramming.html">Web Programming</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-wrapper">
+    <div class="page-hero">
+      <a href="/workinwebprogramming.html" class="back-link">← Back to Web Programming</a>
+      <div class="section-label">Exercise 08</div>
+      <h1>JavaScript <span style="background:linear-gradient(135deg,#a78bfa,#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">DOM</span></h1>
+      <p>The Document Object Model lets JavaScript read and dynamically manipulate every element, attribute, and style on the page.</p>
+    </div>
+
+    <div class="section">
+      <div class="demo-box">
+        <h3>1. Selecting Elements</h3>
+        <pre>document.getElementById('myId')
+document.querySelector('.myClass')
+document.querySelectorAll('p')</pre>
+      </div>
+
+      <div class="demo-box">
+        <h3>2. Changing Content &amp; Style</h3>
+        <p id="change-target" style="font-size:1.1rem;padding:1rem;background:rgba(167,139,250,0.1);border-radius:0.5rem;margin:1rem 0;">Click a button to change me!</p>
+        <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+          <button class="btn btn-primary" onclick="changeText()">Change Text</button>
+          <button class="btn btn-outline" onclick="changeColor()">Change Color</button>
+          <button class="btn btn-outline" onclick="changeFontSize()">Big Text</button>
+          <button class="btn btn-outline" onclick="resetTarget()">Reset</button>
+        </div>
+        <pre>document.getElementById('change-target').textContent = 'New text!';
+element.style.color = '#38bdf8';
+element.style.fontSize = '1.5rem';</pre>
+      </div>
+
+      <div class="demo-box">
+        <h3>3. Creating &amp; Appending Elements</h3>
+        <div id="list-container" style="min-height:60px;padding:0.75rem;background:rgba(15,14,35,0.8);border:1px dashed rgba(167,139,250,0.3);border-radius:0.75rem;margin:1rem 0;">
+          <p style="color:#475569;font-size:0.85rem;">Items will appear here...</p>
+        </div>
+        <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+          <button class="btn btn-primary" onclick="addItem()">Add Item</button>
+          <button class="btn btn-outline" onclick="clearItems()">Clear All</button>
+        </div>
+        <pre>const el = document.createElement('div');
+el.textContent = 'New item';
+el.className   = 'tag';
+container.appendChild(el);</pre>
+      </div>
+
+      <div class="demo-box">
+        <h3>4. Modifying Classes</h3>
+        <div id="class-box" style="padding:1.5rem;background:rgba(15,14,35,0.8);border:2px solid rgba(167,139,250,0.3);border-radius:0.75rem;margin:1rem 0;transition:all 0.3s;text-align:center;font-weight:600;">
+          Toggle my classes
+        </div>
+        <div style="display:flex;gap:0.75rem;flex-wrap:wrap;margin-top:0.75rem;">
+          <button class="btn btn-outline" onclick="toggleGlow()">Toggle Glow</button>
+          <button class="btn btn-outline" onclick="toggleBig()">Toggle Big</button>
+        </div>
+        <pre>element.classList.add('active');
+element.classList.remove('active');
+element.classList.toggle('active');</pre>
+      </div>
+
+      <div class="demo-box">
+        <h3>5. Reading &amp; Setting Attributes</h3>
+        <input type="text" id="attr-input" placeholder="Type something..." style="margin-bottom:0.75rem;">
+        <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+          <button class="btn btn-primary" onclick="readAttr()">Read Value</button>
+          <button class="btn btn-outline" onclick="setPlaceholder()">Change Placeholder</button>
+        </div>
+        <div id="attr-output" style="margin-top:0.75rem;padding:0.75rem;background:rgba(15,14,35,0.8);border-radius:0.5rem;font-family:monospace;font-size:0.85rem;color:#a78bfa;min-height:40px;"></div>
+        <pre>element.getAttribute('placeholder')
+element.setAttribute('placeholder', 'New text')
+element.value  // for form inputs</pre>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>Mohammed Anas — Web Programming Exercise &copy; 2024</p>
+    <a href="/workinwebprogramming.html">← Back to all exercises</a>
+  </footer>
+
+  <script>
+    let itemCount = 0;
+    const colors = ['#a78bfa','#38bdf8','#fb7185','#34d399','#fbbf24'];
+
+    function changeText()  { document.getElementById('change-target').textContent = 'Text changed with JavaScript! 🎉'; }
+    function changeColor() { document.getElementById('change-target').style.color = colors[Math.floor(Math.random()*colors.length)]; }
+    function changeFontSize() { document.getElementById('change-target').style.fontSize = '1.5rem'; }
+    function resetTarget() {
+      const el = document.getElementById('change-target');
+      el.textContent = 'Click a button to change me!';
+      el.style.color = ''; el.style.fontSize = '';
+    }
+    function addItem() {
+      itemCount++;
+      const container = document.getElementById('list-container');
+      if (itemCount === 1) container.innerHTML = '';
+      const el = document.createElement('span');
+      el.className = 'tag';
+      el.textContent = `Item ${itemCount}`;
+      el.style.margin = '0.25rem';
+      container.appendChild(el);
+    }
+    function clearItems() {
+      itemCount = 0;
+      document.getElementById('list-container').innerHTML = '<p style="color:#475569;font-size:0.85rem;">Items will appear here...</p>';
+    }
+    function toggleGlow()  {
+      const el = document.getElementById('class-box');
+      if (el.style.boxShadow) { el.style.boxShadow = ''; el.style.borderColor = 'rgba(167,139,250,0.3)'; }
+      else { el.style.boxShadow = '0 0 30px rgba(167,139,250,0.5)'; el.style.borderColor = '#a78bfa'; }
+    }
+    function toggleBig() {
+      const el = document.getElementById('class-box');
+      el.style.fontSize = el.style.fontSize === '1.5rem' ? '' : '1.5rem';
+    }
+    function readAttr() {
+      const val = document.getElementById('attr-input').value || '(empty)';
+      document.getElementById('attr-output').textContent = `value: "${val}"`;
+    }
+    function setPlaceholder() {
+      document.getElementById('attr-input').setAttribute('placeholder','Changed by JavaScript!');
+      document.getElementById('attr-output').textContent = 'placeholder changed!';
+    }
+  </script>
+</body>
+</html>
