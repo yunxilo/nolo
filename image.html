@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Images in HTML — Exercise</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="nav">
+    <a href="/" class="nav-logo">MA</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/workinwebprogramming.html">Web Programming</a></li>
+      <li><a href="/workincprogramming.html">C Programming</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-wrapper">
+    <div class="page-hero">
+      <a href="/workinwebprogramming.html" class="back-link">← Back to Web Programming</a>
+      <div class="section-label">Exercise 01</div>
+      <h1>Images in <span style="background:linear-gradient(135deg,#a78bfa,#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">HTML</span></h1>
+      <p>Learn how to embed, size, describe, and group images using HTML5 semantic elements.</p>
+    </div>
+
+    <div class="section">
+      <h2>What are HTML Images?</h2>
+      <p>The <code>&lt;img&gt;</code> tag embeds images into a web page. It is a void element — it has no closing tag. The <code>src</code> attribute specifies the image source (URL or file path) and the <code>alt</code> attribute provides a text alternative for screen readers and when the image fails to load.</p>
+
+      <div class="demo-box">
+        <h3>1. Basic Image with Alt Text</h3>
+        <p>Always include an <code>alt</code> attribute. This is essential for accessibility and SEO.</p>
+        <img src="https://picsum.photos/seed/html/600/300" alt="A sample landscape photo" style="width:100%;border-radius:0.75rem;margin-top:1rem;">
+        <pre>&lt;img src="photo.jpg" alt="A sample landscape photo"&gt;</pre>
+      </div>
+
+      <div class="demo-box">
+        <h3>2. Controlling Image Size</h3>
+        <p>You can set the width and height with HTML attributes or CSS. Always specify both to prevent layout shift.</p>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:1rem;">
+          <img src="https://picsum.photos/seed/small1/150/150" alt="Small image" width="150" height="150" style="border-radius:0.75rem;">
+          <img src="https://picsum.photos/seed/small2/200/150" alt="Medium image" width="200" height="150" style="border-radius:0.75rem;">
+          <img src="https://picsum.photos/seed/small3/250/150" alt="Larger image" width="250" height="150" style="border-radius:0.75rem;">
+        </div>
+        <pre>&lt;img src="image.jpg" alt="Description" width="200" height="150"&gt;</pre>
+      </div>
+
+      <div class="demo-box">
+        <h3>3. Figure and Figcaption</h3>
+        <p>Use <code>&lt;figure&gt;</code> and <code>&lt;figcaption&gt;</code> to semantically associate a caption with an image.</p>
+        <figure style="margin-top:1rem;text-align:center;">
+          <img src="https://picsum.photos/seed/fig/500/280" alt="A beautiful landscape" style="width:100%;border-radius:0.75rem;">
+          <figcaption style="color:#64748b;font-size:0.85rem;margin-top:0.5rem;font-style:italic;">Fig. 1 — A beautiful landscape photograph used to illustrate the figure element.</figcaption>
+        </figure>
+        <pre>&lt;figure&gt;
+  &lt;img src="landscape.jpg" alt="A beautiful landscape"&gt;
+  &lt;figcaption&gt;Fig. 1 — A beautiful landscape.&lt;/figcaption&gt;
+&lt;/figure&gt;</pre>
+      </div>
+
+      <div class="demo-box">
+        <h3>4. Responsive Images</h3>
+        <p>Use CSS <code>max-width: 100%</code> so images never overflow their container on small screens.</p>
+        <img src="https://picsum.photos/seed/responsive/800/350" alt="Responsive image example" style="max-width:100%;height:auto;border-radius:0.75rem;margin-top:1rem;">
+        <pre>img { max-width: 100%; height: auto; }</pre>
+      </div>
+
+      <div class="demo-box">
+        <h3>5. Image as a Link</h3>
+        <p>Wrap an image in an <code>&lt;a&gt;</code> tag to make it clickable.</p>
+        <a href="#" onclick="return false;" style="display:inline-block;margin-top:1rem;">
+          <img src="https://picsum.photos/seed/link/300/180" alt="Click to navigate" style="border-radius:0.75rem;border:2px solid rgba(167,139,250,0.4);transition:border-color 0.2s;" onmouseover="this.style.borderColor='#a78bfa'" onmouseout="this.style.borderColor='rgba(167,139,250,0.4)'">
+        </a>
+        <pre>&lt;a href="page.html"&gt;
+  &lt;img src="thumbnail.jpg" alt="Click to navigate"&gt;
+&lt;/a&gt;</pre>
+      </div>
+
+      <div style="margin-top:3rem;padding:1.5rem;background:rgba(124,58,237,0.1);border-radius:1rem;border:1px solid rgba(167,139,250,0.2);">
+        <h3>Key Takeaways</h3>
+        <ul style="list-style:none;padding:0;margin-top:0.75rem;">
+          <li style="padding:0.4rem 0;color:#94a3b8;">✓ Always use the <code>alt</code> attribute for accessibility</li>
+          <li style="padding:0.4rem 0;color:#94a3b8;">✓ Specify <code>width</code> and <code>height</code> to prevent layout shift</li>
+          <li style="padding:0.4rem 0;color:#94a3b8;">✓ Use <code>&lt;figure&gt;</code> and <code>&lt;figcaption&gt;</code> for semantic captions</li>
+          <li style="padding:0.4rem 0;color:#94a3b8;">✓ Apply <code>max-width: 100%</code> for responsiveness</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>Mohammed Anas — Web Programming Exercise &copy; 2024</p>
+    <a href="/workinwebprogramming.html">← Back to all exercises</a>
+  </footer>
+</body>
+</html>
