@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML Forms — Exercise</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="nav">
+    <a href="/" class="nav-logo">MA</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/workinwebprogramming.html">Web Programming</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-wrapper">
+    <div class="page-hero">
+      <a href="/workinwebprogramming.html" class="back-link">← Back to Web Programming</a>
+      <div class="section-label">Exercise 06</div>
+      <h1>HTML <span style="background:linear-gradient(135deg,#a78bfa,#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Forms</span></h1>
+      <p>Forms are the primary way users interact with web applications — collecting data, triggering actions, and enabling communication.</p>
+    </div>
+
+    <div class="section">
+      <div class="demo-box">
+        <h3>1. Text Inputs</h3>
+        <form onsubmit="return false;">
+          <div class="form-group">
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" name="fname" placeholder="Mohammed" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="anas@example.com" required>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="••••••••" minlength="8">
+          </div>
+        </form>
+        <pre>&lt;input type="text"     name="fname"    required&gt;
+&lt;input type="email"    name="email"    required&gt;
+&lt;input type="password" name="password" minlength="8"&gt;</pre>
+      </div>
+
+      <div class="demo-box">
+        <h3>2. Select, Radio &amp; Checkbox</h3>
+        <form onsubmit="return false;">
+          <div class="form-group">
+            <label for="country">Country</label>
+            <select id="country" name="country">
+              <option value="ma">Morocco 🇲🇦</option>
+              <option value="fr">France 🇫🇷</option>
+              <option value="us">United States 🇺🇸</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Study Level</label>
+            <div style="display:flex;gap:1.5rem;margin-top:0.5rem;">
+              <label style="display:flex;align-items:center;gap:0.4rem;cursor:pointer;"><input type="radio" name="level" value="bachelor"> Bachelor</label>
+              <label style="display:flex;align-items:center;gap:0.4rem;cursor:pointer;"><input type="radio" name="level" value="master"> Master</label>
+              <label style="display:flex;align-items:center;gap:0.4rem;cursor:pointer;"><input type="radio" name="level" value="phd"> PhD</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Interests</label>
+            <div style="display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:0.5rem;">
+              <label style="display:flex;align-items:center;gap:0.4rem;cursor:pointer;"><input type="checkbox" name="interest" value="ai"> AI</label>
+              <label style="display:flex;align-items:center;gap:0.4rem;cursor:pointer;"><input type="checkbox" name="interest" value="web" checked> Web Dev</label>
+              <label style="display:flex;align-items:center;gap:0.4rem;cursor:pointer;"><input type="checkbox" name="interest" value="data"> Data Science</label>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="demo-box">
+        <h3>3. Textarea &amp; Range</h3>
+        <form onsubmit="return false;">
+          <div class="form-group">
+            <label for="bio">Bio</label>
+            <textarea id="bio" name="bio" placeholder="Tell us about yourself..."></textarea>
+          </div>
+          <div class="form-group">
+            <label for="skill">Skill Level: <span id="skill-val">50</span>%</label>
+            <input type="range" id="skill" name="skill" min="0" max="100" value="50"
+              style="width:100%;accent-color:#a78bfa;margin-top:0.5rem;"
+              oninput="document.getElementById('skill-val').textContent=this.value">
+          </div>
+        </form>
+      </div>
+
+      <div class="demo-box">
+        <h3>4. Complete Registration Form</h3>
+        <form onsubmit="handleSubmit(event)" style="max-width:500px;">
+          <div class="form-group">
+            <label for="reg-name">Full Name *</label>
+            <input type="text" id="reg-name" placeholder="Mohammed Anas" required>
+          </div>
+          <div class="form-group">
+            <label for="reg-email">Email *</label>
+            <input type="email" id="reg-email" placeholder="anas@university.ma" required>
+          </div>
+          <div class="form-group">
+            <label for="reg-msg">Message</label>
+            <textarea id="reg-msg" placeholder="Your message..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit Form</button>
+        </form>
+        <div id="form-success" style="display:none;margin-top:1rem;padding:1rem;background:rgba(52,211,153,0.15);border:1px solid rgba(52,211,153,0.3);border-radius:0.75rem;color:#34d399;">
+          ✓ Form submitted successfully!
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>Mohammed Anas — Web Programming Exercise &copy; 2024</p>
+    <a href="/workinwebprogramming.html">← Back to all exercises</a>
+  </footer>
+
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();
+      document.getElementById('form-success').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
