@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navigation & Links — Exercise</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .tab-nav { display:flex;border-bottom:1px solid rgba(167,139,250,0.2);margin-bottom:1.5rem; }
+    .tab-btn { padding:0.6rem 1.25rem;background:none;border:none;color:#64748b;font-weight:600;font-size:0.875rem;cursor:pointer;border-bottom:2px solid transparent;transition:all 0.2s; }
+    .tab-btn.active { color:#a78bfa;border-bottom-color:#a78bfa; }
+    .tab-panel { display:none; }
+    .tab-panel.active { display:block; }
+
+    .breadcrumb { display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;flex-wrap:wrap; }
+    .breadcrumb a { color:#64748b; }
+    .breadcrumb a:hover { color:#a78bfa; text-decoration:none; }
+    .breadcrumb span { color:#475569; }
+
+    .pagination { display:flex;align-items:center;gap:0.35rem;flex-wrap:wrap; }
+    .page-btn { width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:0.4rem;border:1px solid rgba(167,139,250,0.2);color:#94a3b8;font-size:0.85rem;font-weight:600;cursor:pointer;transition:all 0.2s; background:none; }
+    .page-btn.active { background:linear-gradient(135deg,#7c3aed,#2563eb);border-color:transparent;color:#fff; }
+    .page-btn:hover:not(.active) { border-color:#a78bfa;color:#a78bfa; }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <a href="/" class="nav-logo">MA</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/workinwebprogramming.html">Web Programming</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-wrapper">
+    <div class="page-hero">
+      <a href="/workinwebprogramming.html" class="back-link">← Back to Web Programming</a>
+      <div class="section-label">Exercise 12</div>
+      <h1>Navigation <span style="background:linear-gradient(135deg,#a78bfa,#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">&amp; Links</span></h1>
+      <p>Navigation is the backbone of usability. HTML links combined with smart CSS patterns create every kind of navigation pattern.</p>
+    </div>
+
+    <div class="section">
+      <div class="demo-box">
+        <h3>1. Anchor Links and Targets</h3>
+        <p>The <code>&lt;a&gt;</code> tag creates hyperlinks. The <code>href</code> attribute specifies the destination.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:0.75rem;margin:1rem 0;">
+          <a href="/" class="btn btn-outline">Internal Page (/)</a>
+          <a href="https://github.com" target="_blank" rel="noopener" class="btn btn-outline">External (GitHub) ↗</a>
+          <a href="#section-anchor" class="btn btn-outline">Anchor (#section)</a>
+          <a href="mailto:test@example.com" class="btn btn-outline">Mailto Link</a>
+        </div>
+        <pre>&lt;a href="page.html"&gt;Internal link&lt;/a&gt;
+&lt;a href="https://site.com" target="_blank" rel="noopener"&gt;External&lt;/a&gt;
+&lt;a href="#section-id"&gt;Anchor link&lt;/a&gt;
+&lt;a href="mailto:user@example.com"&gt;Email&lt;/a&gt;</pre>
+      </div>
+
+      <div class="demo-box" id="section-anchor">
+        <h3>2. Breadcrumb Navigation</h3>
+        <p>Breadcrumbs show the user's current location within a site hierarchy.</p>
+        <nav aria-label="Breadcrumb" style="margin:1rem 0;">
+          <div class="breadcrumb">
+            <a href="/">Home</a>
+            <span>/</span>
+            <a href="/workinwebprogramming.html">Web Programming</a>
+            <span>/</span>
+            <span style="color:#a78bfa;">Navigation Exercise</span>
+          </div>
+        </nav>
+        <pre>&lt;nav aria-label="Breadcrumb"&gt;
+  &lt;a href="/"&gt;Home&lt;/a&gt; /
+  &lt;a href="/exercises"&gt;Exercises&lt;/a&gt; /
+  &lt;span&gt;Current Page&lt;/span&gt;
+&lt;/nav&gt;</pre>
+      </div>
+
+      <div class="demo-box">
+        <h3>3. Tab Navigation</h3>
+        <div class="tab-nav">
+          <button class="tab-btn active" onclick="switchTab('html')">HTML</button>
+          <button class="tab-btn" onclick="switchTab('css')">CSS</button>
+          <button class="tab-btn" onclick="switchTab('js')">JavaScript</button>
+        </div>
+        <div id="tab-html" class="tab-panel active">
+          <p>HTML (HyperText Markup Language) is the standard markup language for creating web pages. It describes the structure of a web page semantically.</p>
+        </div>
+        <div id="tab-css" class="tab-panel">
+          <p>CSS (Cascading Style Sheets) is the language used to style HTML documents. It describes how elements should be displayed on screen, paper, or in other media.</p>
+        </div>
+        <div id="tab-js" class="tab-panel">
+          <p>JavaScript is a high-level, interpreted programming language that conforms to the ECMAScript specification. It enables interactive and dynamic web content.</p>
+        </div>
+      </div>
+
+      <div class="demo-box">
+        <h3>4. Pagination</h3>
+        <div class="pagination" style="margin:1rem 0;">
+          <button class="page-btn" onclick="setPage(this,1)">«</button>
+          <button class="page-btn active" onclick="setPage(this,1)">1</button>
+          <button class="page-btn" onclick="setPage(this,2)">2</button>
+          <button class="page-btn" onclick="setPage(this,3)">3</button>
+          <button class="page-btn" onclick="setPage(this,4)">4</button>
+          <button class="page-btn" onclick="setPage(this,5)">5</button>
+          <button class="page-btn" onclick="setPage(this,5)">»</button>
+        </div>
+        <div id="page-info" style="font-size:0.85rem;color:#64748b;">Showing page 1 of 5</div>
+      </div>
+
+      <div class="demo-box">
+        <h3>5. Skip Navigation (Accessibility)</h3>
+        <p>A "skip to main content" link lets keyboard users bypass the navigation and jump directly to the content.</p>
+        <pre>&lt;a href="#main-content" class="skip-link"&gt;Skip to main content&lt;/a&gt;
+&lt;nav&gt;...navigation...&lt;/nav&gt;
+&lt;main id="main-content"&gt;...content...&lt;/main&gt;</pre>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>Mohammed Anas — Web Programming Exercise &copy; 2024</p>
+    <a href="/workinwebprogramming.html">← Back to all exercises</a>
+  </footer>
+
+  <script>
+    function switchTab(name) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + name).classList.add('active');
+      event.target.classList.add('active');
+    }
+    function setPage(btn, num) {
+      document.querySelectorAll('.page-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('page-info').textContent = `Showing page ${num} of 5`;
+    }
+  </script>
+</body>
+</html>
